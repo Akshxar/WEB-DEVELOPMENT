@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+    <title>TRACKER APP </title>
+    <style>
+       body{
+        background-color: rgb(82, 255, 174);
+       }
+       
+
+    </style>
+
+</head>
+<body >
+  
+<div class="container-md">
+
+    <center>
+        <br><br>
+    <h1 id="h1id" > TRACKER APP </h1>
+    <br>
+<form onsubmit="funsave(event)"  class="form-check-inline">
+
+
+    <label for='buy' class="form-label">BUYER NAME :</label>
+    <input type="text" id="buyerid" name="buyername"class="input-group"><br>
+
+
+    <label for="expense" class="form-label">CHOOSE EXPENSE AMOUNT :</label>
+    <input type="number" id="expenseid" name="expensename"class="input-group"><br>
+
+    <label for="description" class="form-label">CHOOSE DESCRIPTION : </label>
+    <input type="text" id="descriptionid" name="descriptionname" class="input-group"><br>
+
+
+    <select for="selection" name="selectname" id="selectid">
+        
+        <option value="movie"> MOVIE </option>
+        <option value="food"> FOOD  </option>
+        <option value="ticket">   TICKET </option>
+        <option value="junk food">  JUNK FOOD  </option>
+        <option value="PARLOUR">  PARLOUR   </option>
+
+    </select>
+    <input type="submit" id="submitid" class="btn-dark">
+
+    <br><br>
+    <ul id="ulid" ></ul>
+
+</form>
+</center>
+</div>
+
+
+
+<script>
+
+       function funsave(event){
+        e.preventDefault();
+         
+        const buy=document.getElementById('buyerid').value;
+        const expense=document.getElementById('expenseid').value;
+        const description=getElementById('descriptionid').value;
+        const  selection=getElementById('selectid').value;
+
+        const details={buy,expense,description,selection}
+        localStorage.setItem( details.buy ,JSON.stringify(details) )
+       
+        showonscreen(details)
+
+       }
+
+       function showonscreen(details){
+
+        var parele=document.getElementById('ulid')
+
+        var newli=document.createElement('li');
+        newli.textContent=details.buy
+
+        parele.appendChild(newli)
+
+
+         
+
+
+
+       }
+
+
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

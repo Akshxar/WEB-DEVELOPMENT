@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM</title>
+
+   
+    
+   <style>
+        form{
+            background-color: rgb(255, 81, 0);
+            text-align:left;
+            
+            
+            
+        }
+        input{
+            color: rgb(0, 98, 255) ;
+            font-size: 15px ;
+
+
+        }
+
+   </style>
+   
+
+</head>
+<body>
+    
+
+        
+        <h1>BASIC FORM ONLY WITH HTML & STYLE & COLORS  </h1>
+
+        <form action="" >   <!--action takes the input data of the user  in the file -->
+
+            <label for="name" class="form-label" >  NAME   </label>
+            <input type="text" class="form-control" id="name" name="name" 
+            placeholder="Enter your Name" required >
+
+            <br>
+            <br>
+
+            <label for="email" class="form-label">  EMAIL </label>
+            <input type="email" class="form-control" id="email" name="email" 
+            placeholder="someone@gmail.com" >
+
+            <br>
+            <br>
+
+                          <!--DIFFRENCE BETWEEN PLACEHOLDER AND VALUE -->
+
+            <label for="password" class="form-label"> PASSWORD </label>
+            <input type="password" class="form-control" id="password" name="password" 
+            value="ENTER PASSWORD" >  
+            
+            <br>
+            <br>
+            
+
+                        <!--MAKE CHECK BOX FOR Remember me  -->
+            
+            <label for="form-check-label" class="form-check-label">Remember me</label>
+            <input type="checkbox" class="form-check-input" 
+            id="Remember me" name="Remember me" >
+
+
+            
+                        <!--MAKE SUBMIT BUTTON-->
+                          <br>
+                          <br>
+                          
+            
+            <button type="submit">SUBMIT </button>      
+                          
+                        <!--MAKE RESET BUTTON -->
+            
+            <button type="reset"> RESET </button>   
+            
+                          
+
+
+
+        </form>
+    
+
+
+
+    
+</body>
+</html>
