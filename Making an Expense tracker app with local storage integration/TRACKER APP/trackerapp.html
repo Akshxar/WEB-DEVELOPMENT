@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  
+    
+    <title>Expense Tracker <Applet></Applet></title>
+    <style>
+        
+        body{
+           
+            background-color:rgb(254, 255, 166);
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+        }
+        
+    </style>
+
+</head>
+<body >
+   
+    <center> 
+        <div class="container-md"></div>
+    <form onsubmit="funsave(event)" class="form-check-inline" >
+    
+    
+    <br><br> 
+    <h1 id="h1id">EXPENSE TRACKER APP</h1><br><br>
+
+
+    <label for="expense" class="form-label">Choose Expense Amount : </label><br>
+    <input type="number" class="input-group" name="expensename" id="expenseid"><br>
+
+    <label for="description" class="form-label">Choose Description : </label><br>
+    <input type="text"  class="input-group" name="descriptionname" id="descriptionid"><br>
+
+
+    <label for="category">Choose Category : </label>
+    <select name="categoryname" id="categoryid">
+     
+    <option value="NONE">NONE</option>
+    <option value="movie">Movie</option>
+     <option value="fuel">Fuel</option>
+     <option value="food">Food</option>
+     <option value="cab">Cab</option>
+     <option value="ticket">BusTicket</option>
+
+    </select>
+
+    <br>
+    <br>
+    <button type="submit" value="submit" class="btn-dark" id="buttonid" >ADD EXPENSE</button>
+    
+    <br>
+    <br>
+
+     <ul class="ulclass" id="ulid"> </ul>
+   
+    </form>
+</div>
+
+</center> 
+     
+     <script src="tracketapp.js" ></script>
+     <script >
+        
+        function funsave(event){
+          event.preventDefault();
+            
+          const expenseamount=document.getElementById('expenseid').value;
+          const description=document.getElementById('descriptionid').value;
+          const categorydata=document.getElementById('categoryid').value;
+         const fulldetails={expenseamount,description,categorydata};
+
+          localStorage.setItem(fulldetails.expenseamount,JSON.stringify(fulldetails));
+         
+
+          showdetailsonscreen(fulldetails)
+
+        }
+
+        function showdetailsonscreen(fulldetails)
+        {
+
+        //showing information     
+
+        var ulaccess=document.getElementById('ulid');        
+        var newli=document.createElement('li');      
+        newli.textContent=fulldetails.expenseamount + "   " +fulldetails.description + "   " + fulldetails.categorydata;
+
+        ulaccess.appendChild(newli)
+       
+        //creating deletebutton 
+
+        var deletebtn=document.createElement('input');
+        deletebtn.type='button';
+        deletebtn.value='Delete';
+        deletebtn.onclick=()=>
+        {
+            localStorage.removeItem(fulldetails.expenseamount)
+            ulaccess.removeChild(newli)
+    
+        }
+        newli.appendChild(deletebtn);
+        ulaccess.appendChild(newli)
+
+
+
+
+        //creating editbutton
+
+        var editbtn=document.createElement('button');
+        editbtn.className='btn-dark';
+        editbtn.appendChild(document.createTextNode( 'EDIT' ));
+        newli.appendChild(editbtn);
+        ulaccess.append(newli) 
+
+        editbtn.onclick=() =>{
+          
+            localStorage.removeItem(fulldetails.expenseamount)
+            ulaccess.removeChild(newli)
+            document.getElementById('expenseid').value=  fulldetails.expenseamount
+            document.getElementById('descriptionid').value=fulldetails.description
+            document.getElementById('categoryid').value=fulldetails.categorydata
+
+        }
+
+       
+             
+
+        }
+
+  
+
+
+
+     </script>
+    
+</body>
+</html>
